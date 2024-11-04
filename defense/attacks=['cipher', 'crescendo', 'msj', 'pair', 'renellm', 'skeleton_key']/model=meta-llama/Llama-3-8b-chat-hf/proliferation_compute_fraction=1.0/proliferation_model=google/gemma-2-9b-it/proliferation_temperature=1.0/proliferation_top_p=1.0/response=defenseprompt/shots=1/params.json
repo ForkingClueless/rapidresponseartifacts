@@ -1,0 +1,1 @@
+{"response": "defenseprompt", "attacks": ["cipher", "crescendo", "msj", "pair", "renellm", "skeleton_key"], "model": "meta-llama/Llama-3-8b-chat-hf", "shots": 1, "proliferation_model": "google/gemma-2-9b-it", "proliferation_compute_fraction": 1.0, "proliferation_top_p": 1.0, "proliferation_temperature": 1.0}

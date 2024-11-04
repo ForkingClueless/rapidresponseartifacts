@@ -1,0 +1,1 @@
+{"attack": "renellm_iid", "target": "mistralai/Mistral-7B-Instruct-v0.2", "proliferation_model": "Meta-Llama-3.1-405B-Instruct-Turbo,Meta-Llama-3.1-70B-Instruct-Turbo,gemma-2-27b-it,Meta-Llama-3.1-8B-Instruct-Turbo,gemma-2-9b-it", "proliferation_shots": 1, "proliferation_temperature": 1.0, "proliferation_top_p": 1.0, "proliferation_is_benign": true}

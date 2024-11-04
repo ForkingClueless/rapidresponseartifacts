@@ -1,0 +1,1 @@
+{"attack": "cipher_iid", "target": "meta-llama/Llama-3-8b-chat-hf", "proliferation_temperature": 1.0, "proliferation_top_p": 1.0, "proliferation_model": "google/gemma-2-27b-it", "proliferation_shots": 1, "proliferation_is_benign": true}

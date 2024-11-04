@@ -1,0 +1,1 @@
+{"response": "embedding", "attacks": ["cipher", "crescendo", "msj", "pair", "renellm", "skeleton_key"], "model": "mistralai/Mistral-7B-Instruct-v0.2", "shots": 1, "proliferation_model": "google/gemma-2-27b-it", "proliferation_compute_fraction": 1.0, "proliferation_top_p": 1.0, "proliferation_temperature": 1.0}

@@ -1,0 +1,1 @@
+{"response": "defenseprompt", "attacks": ["cipher", "crescendo", "msj", "pair", "renellm", "skeleton_key"], "model": "gpt-4o-2024-08-06", "shots": 1, "proliferation_model": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo", "proliferation_compute_fraction": 0.03125, "proliferation_top_p": 1.0, "proliferation_temperature": 1.0}

@@ -1,0 +1,1 @@
+{"attack": "renellm_iid", "target": "gpt-4o-2024-08-06", "proliferation_model": "google/gemma-2-9b-it", "proliferation_shots": 25, "proliferation_is_benign": false, "proliferation_temperature": 1.0, "proliferation_top_p": 1.0}

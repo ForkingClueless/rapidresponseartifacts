@@ -1,0 +1,1 @@
+{"response": "guardfewshot", "attacks": ["cipher", "crescendo", "msj", "pair", "renellm", "skeleton_key"], "model": "gpt-4o-2024-08-06", "shots": 1, "proliferation_model": "Qwen/Qwen2-72B-Instruct", "proliferation_compute_fraction": 1.0, "proliferation_top_p": 1.0, "proliferation_temperature": 1.0}

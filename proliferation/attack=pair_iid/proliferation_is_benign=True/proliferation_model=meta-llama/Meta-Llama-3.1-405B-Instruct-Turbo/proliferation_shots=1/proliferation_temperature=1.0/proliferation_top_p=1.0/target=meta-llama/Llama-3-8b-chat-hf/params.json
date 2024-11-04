@@ -1,0 +1,1 @@
+{"attack": "pair_iid", "target": "meta-llama/Llama-3-8b-chat-hf", "proliferation_temperature": 1.0, "proliferation_top_p": 1.0, "proliferation_model": "meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo", "proliferation_shots": 1, "proliferation_is_benign": true}

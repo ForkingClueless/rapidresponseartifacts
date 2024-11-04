@@ -1,0 +1,1 @@
+{"attack": "msj_iid", "target": "mistralai/Mistral-7B-Instruct-v0.2", "proliferation_model": "meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo", "proliferation_shots": 1, "proliferation_is_benign": true, "proliferation_temperature": 1.0, "proliferation_top_p": 1.0}
