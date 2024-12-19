@@ -6,9 +6,6 @@ logging.basicConfig(level=logging.INFO)
 from easyjailbreak.attacker import AttackerBase
 from easyjailbreak.datasets import JailbreakDataset, Instance
 from utils.remote_inference import Converser
-from utils.constants import update_env
-
-update_env()
 import os
 import json
 import random

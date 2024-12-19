@@ -65,11 +65,11 @@ def parallel_map(f, *args, concurrency=25, use_tqdm=False, **kwargs):
         ]
         if use_tqdm:
             # Use tqdm to show progress, but don't affect the result order
-            list(
-                tqdm(
+            for i in tqdm(
                     concurrent.futures.as_completed(futures),
                     total=len(futures),
                     desc="Processing",
-                )
-            )
+                ):
+                # try to error early
+                i.result()
         return [future.result() for future in futures]

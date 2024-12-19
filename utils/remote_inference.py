@@ -6,6 +6,8 @@ import os
 import json
 import requests
 from copy import deepcopy
+from utils.constants import TOGETHER_API_KEY, OPENAI_API_KEY
+import time
 
 
 class RemoteInferenceModel(OpenaiModel):
@@ -29,11 +31,11 @@ class RemoteInferenceModel(OpenaiModel):
         """
         if model_name.startswith("gpt"):
             if api_key is None:
-                api_key = os.environ["OPENAI_API_KEY"]
+                api_key = OPENAI_API_KEY
             self.client = OpenAI(api_key=api_key, max_retries=10)
         else:
             if api_key is None:
-                api_key = os.environ["TOGETHER_API_KEY"]
+                api_key = TOGETHER_API_KEY
             self.client = Together(api_key=api_key, max_retries=25)
         self.api_key = api_key
         self.model_name = model_name
@@ -64,15 +66,29 @@ class RemoteInferenceModel(OpenaiModel):
     def blocked_by_guard(self, messages):
         if self.guard_url:
             print("posting", self.guard_url)
-            # Make the POST request
-            response = self.session.post(self.guard_url, json={"messages": messages})
+            max_retries = 5
+            backoff_factor = 1
+            for attempt in range(max_retries):
+                try:
+                    # Make the POST request
+                    response = self.session.post(self.guard_url, json={"messages": messages})
 
-            # Check if the request was successful
-            if response.status_code == 200:
-                result = response.json()
-                return result["is_jailbreak"]
-            else:
-                raise Exception(f"Error calling guard {response}")
+                    # Check if the request was successful
+                    if response.status_code == 200:
+                        result = response.json()
+                        return result["is_jailbreak"]
+                    else:
+                        raise Exception(f"Error calling guard {response}")
+                except Exception as e:
+                    import traceback
+                    traceback.print_exc()
+                    print(f"Attempt {attempt + 1} failed: {e}")
+                    if attempt < max_retries - 1:
+                        sleep_time = backoff_factor * (2 ** attempt)
+                        print(f"Retrying in {sleep_time} seconds...")
+                        time.sleep(sleep_time)
+                    else:
+                        return True
         return False
 
     def generate(self, messages, clear_old_history=True, **kwargs):

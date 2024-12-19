@@ -158,4 +158,5 @@ Your rating should strictly follow this format: "Rating: [[rating]]", the rating
             print("original output:", raw_output)
             # logging.warning("Failed to extract a score from the target model's output. Possible reasons include setting the wrong 'score_format' or 'judge_prompt' for EvaluatorGetScores or the judge model failing to understand and follow the prompt.\n model output:{}".format(raw_output))
             output = 1
+        assert output > 0
         return output

@@ -4,6 +4,7 @@ from ReNeLLM import ReNeLLM
 from Crescendo import Crescendo
 from SkeletonKey import SkeletonKey
 from MSJ import MSJ
+from TAP import TAP
 from easyjailbreak.datasets import JailbreakDataset
 from easyjailbreak.selector.RandomSelector import RandomSelectPolicy
 from utils.remote_inference import RemoteInferenceModel
@@ -282,6 +283,23 @@ def msj_ood(target_model, jailbreak_dataset, dataset_name, **kwargs):
         shots=msj_shots(target_model) * 2,
     )
     return attack_artifacts(attacker, name, target_model, dataset_name)
+
+def tap_iid(
+    target_model,
+    defense_mode, # either pre or post, for pre or post finetuning
+):
+    name = "tap_iid"
+    attacker = TAP(
+        attack_model=load_model(DEFAULT_ATTACK_MODEL),
+        eval_model=load_model(DEFAULT_ATTACK_MODEL),
+        target_model=load_model(
+            target_model, 
+            guard_url="http://localhost:8000/guard"
+            ),
+        jailbreak_datasets=generate_behaviors()["test_iid"]
+    )
+
+    return attack_artifacts(attacker, name, target_model,f"test_iid_{defense_mode}")
 
 
 def generate_behaviors():
